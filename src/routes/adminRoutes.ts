@@ -45,6 +45,7 @@ router.post('/assignments/:id/reject', validateAdmin, async (req,res,next)=>{
             {isAccepted:'rejected'},
             {new:true}
         );
+        if(!newAssignment) return res.status(404).send('pls enter a valid assignment id');
         res.status(200).send(newAssignment);
     }catch(err){
         next(err);
